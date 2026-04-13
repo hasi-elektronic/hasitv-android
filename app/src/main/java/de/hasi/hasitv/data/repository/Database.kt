@@ -1,11 +1,11 @@
-package de.hasi.hasitv.data.repository
+package com.hasielectronic.hasitv.data.repository
 
 import android.content.Context
 import androidx.room.*
-import de.hasi.hasitv.data.model.Channel
-import de.hasi.hasitv.data.model.EpgProgram
-import de.hasi.hasitv.data.model.Playlist
-import de.hasi.hasitv.data.model.PlaylistType
+import com.hasielectronic.hasitv.data.model.Channel
+import com.hasielectronic.hasitv.data.model.EpgProgram
+import com.hasielectronic.hasitv.data.model.Playlist
+import com.hasielectronic.hasitv.data.model.PlaylistType
 import kotlinx.coroutines.flow.Flow
 
 // ─── Type Converters ─────────────────────────────────────────────
