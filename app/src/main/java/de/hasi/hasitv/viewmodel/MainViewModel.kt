@@ -1,12 +1,12 @@
-package de.hasi.hasitv.viewmodel
+package com.hasielectronic.hasitv.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import de.hasi.hasitv.data.model.Channel
-import de.hasi.hasitv.data.model.EpgProgram
-import de.hasi.hasitv.data.model.Playlist
-import de.hasi.hasitv.data.repository.IptvRepository
+import com.hasielectronic.hasitv.data.model.Channel
+import com.hasielectronic.hasitv.data.model.EpgProgram
+import com.hasielectronic.hasitv.data.model.Playlist
+import com.hasielectronic.hasitv.data.repository.IptvRepository
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
