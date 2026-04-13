@@ -11,16 +11,25 @@ android {
 
     defaultConfig {
         applicationId = "com.hasielectronic.hasitv"
-        minSdk = 21          // Android 5 — Fire TV Stick 1st gen support
+        minSdk = 21
         targetSdk = 35
         versionCode = 1
         versionName = "1.0.0"
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("hasitv-keystore.jks")
+            storePassword = System.getenv("KEYSTORE_PASSWORD") ?: "hasitv2026"
+            keyAlias = System.getenv("KEY_ALIAS") ?: "hasitv"
+            keyPassword = System.getenv("KEY_PASSWORD") ?: "hasitv2026"
+        }
+    }
+
     buildTypes {
         release {
-            isMinifyEnabled = true
-            isShrinkResources = true
+            isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -52,34 +61,21 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-
-    // Android TV / Leanback
     implementation(libs.androidx.leanback)
     implementation(libs.androidx.tv.foundation)
     implementation(libs.androidx.tv.material)
-
-    // ExoPlayer (Media3)
     implementation(libs.exoplayer.core)
     implementation(libs.exoplayer.hls)
     implementation(libs.exoplayer.rtsp)
     implementation(libs.exoplayer.dash)
     implementation(libs.exoplayer.ui)
     implementation(libs.exoplayer.session)
-
-    // Network
     implementation(libs.okhttp)
     implementation(libs.coroutines.android)
-
-    // Image loading
     implementation(libs.coil.compose)
-
-    // Room (local DB)
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
-
-    // Navigation
     implementation(libs.navigation.compose)
-
     debugImplementation(libs.androidx.ui.tooling)
 }
