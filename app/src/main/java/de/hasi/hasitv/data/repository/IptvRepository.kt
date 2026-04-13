@@ -1,15 +1,15 @@
-package de.hasi.hasitv.data.repository
+package com.hasielectronic.hasitv.data.repository
 
 import android.content.Context
 import android.content.SharedPreferences
-import de.hasi.hasitv.data.model.Channel
-import de.hasi.hasitv.data.model.EpgProgram
-import de.hasi.hasitv.data.model.Playlist
-import de.hasi.hasitv.data.model.PlaylistType
-import de.hasi.hasitv.data.parser.M3UParser
-import de.hasi.hasitv.data.parser.XmltvParser
-import de.hasi.hasitv.data.parser.XtreamConfig
-import de.hasi.hasitv.data.parser.XtreamService
+import com.hasielectronic.hasitv.data.model.Channel
+import com.hasielectronic.hasitv.data.model.EpgProgram
+import com.hasielectronic.hasitv.data.model.Playlist
+import com.hasielectronic.hasitv.data.model.PlaylistType
+import com.hasielectronic.hasitv.data.parser.M3UParser
+import com.hasielectronic.hasitv.data.parser.XmltvParser
+import com.hasielectronic.hasitv.data.parser.XtreamConfig
+import com.hasielectronic.hasitv.data.parser.XtreamService
 import kotlinx.coroutines.flow.Flow
 
 class IptvRepository(context: Context) {
