@@ -1,7 +1,7 @@
-package de.hasi.hasitv.data.parser
+package com.hasielectronic.hasitv.data.parser
 
 import android.util.Xml
-import de.hasi.hasitv.data.model.EpgProgram
+import com.hasielectronic.hasitv.data.model.EpgProgram
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
