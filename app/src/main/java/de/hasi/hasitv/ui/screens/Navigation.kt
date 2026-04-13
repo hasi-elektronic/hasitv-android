@@ -1,11 +1,11 @@
-package de.hasi.hasitv.ui.screens
+package com.hasielectronic.hasitv.ui.screens
 
 import androidx.compose.runtime.*
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import de.hasi.hasitv.data.model.Channel
-import de.hasi.hasitv.viewmodel.MainViewModel
+import com.hasielectronic.hasitv.data.model.Channel
+import com.hasielectronic.hasitv.viewmodel.MainViewModel
 
 sealed class Screen(val route: String) {
     object Home     : Screen("home")
