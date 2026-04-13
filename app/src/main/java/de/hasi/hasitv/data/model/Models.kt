@@ -1,4 +1,4 @@
-package de.hasi.hasitv.data.model
+package com.hasielectronic.hasitv.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
