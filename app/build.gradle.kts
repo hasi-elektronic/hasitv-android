@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "de.hasi.hasitv"
+    namespace = "com.hasielectronic.hasitv"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "de.hasi.hasitv"
+        applicationId = "com.hasielectronic.hasitv"
         minSdk = 21          // Android 5 — Fire TV Stick 1st gen support
         targetSdk = 35
         versionCode = 1
