@@ -44,7 +44,7 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x gradlew
 
-      - name: Generate Keystore (for Play App Signing)
+      - name: Generate Keystore
         run: |
           keytool -genkey -v \
             -keystore app/hasitv-keystore.jks \
@@ -55,6 +55,18 @@ jobs:
             -storepass hasitv2026 \
             -keypass hasitv2026 \
             -dname "CN=HasiTV, OU=Hasi Elektronic, O=Hasi Elektronic, L=Vaihingen, ST=BW, C=DE"
+          
+          # Export upload certificate (.pem) for Play Console
+          keytool -export \
+            -keystore app/hasitv-keystore.jks \
+            -alias hasitv \
+            -storepass hasitv2026 \
+            -file upload_cert.der
+          
+          openssl x509 -inform der -in upload_cert.der -out upload_cert.pem
+          
+          echo "=== Keystore SHA1 fingerprint ==="
+          keytool -list -keystore app/hasitv-keystore.jks -storepass hasitv2026 -alias hasitv
 
       - name: Build Release AAB
         run: ./gradlew bundleRelease
@@ -74,10 +86,13 @@ jobs:
           changesNotSentForReview: true
           whatsNewDirectory: distribution/whatsnew
 
-      - name: Upload AAB as artifact
+      - name: Upload artifacts
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: hasitv-release-aab
-          path: app/build/outputs/bundle/release/app-release.aab
+          name: hasitv-release-artifacts
+          path: |
+            app/build/outputs/bundle/release/app-release.aab
+            upload_cert.pem
+            app/hasitv-keystore.jks
           retention-days: 30
