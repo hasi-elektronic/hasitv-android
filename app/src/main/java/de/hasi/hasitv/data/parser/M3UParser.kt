@@ -1,6 +1,6 @@
-package de.hasi.hasitv.data.parser
+package com.hasielectronic.hasitv.data.parser
 
-import de.hasi.hasitv.data.model.Channel
+import com.hasielectronic.hasitv.data.model.Channel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
