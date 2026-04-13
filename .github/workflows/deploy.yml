@@ -44,36 +44,20 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x gradlew
 
-      - name: Generate Keystore
+      - name: Restore Keystore from Secret
         run: |
-          keytool -genkey -v \
-            -keystore app/hasitv-keystore.jks \
-            -alias hasitv \
-            -keyalg RSA \
-            -keysize 2048 \
-            -validity 10000 \
-            -storepass hasitv2026 \
-            -keypass hasitv2026 \
-            -dname "CN=HasiTV, OU=Hasi Elektronic, O=Hasi Elektronic, L=Vaihingen, ST=BW, C=DE"
-          
-          # Export upload certificate (.pem) for Play Console
-          keytool -export \
-            -keystore app/hasitv-keystore.jks \
-            -alias hasitv \
-            -storepass hasitv2026 \
-            -file upload_cert.der
-          
-          openssl x509 -inform der -in upload_cert.der -out upload_cert.pem
-          
-          echo "=== Keystore SHA1 fingerprint ==="
-          keytool -list -keystore app/hasitv-keystore.jks -storepass hasitv2026 -alias hasitv
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > app/hasitv-keystore.jks
+          echo "Keystore restored"
+          keytool -list -keystore app/hasitv-keystore.jks \
+            -storepass "${{ secrets.KEYSTORE_PASSWORD }}" \
+            -alias "${{ secrets.KEY_ALIAS }}"
 
       - name: Build Release AAB
         run: ./gradlew bundleRelease
         env:
-          KEYSTORE_PASSWORD: hasitv2026
-          KEY_ALIAS: hasitv
-          KEY_PASSWORD: hasitv2026
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
 
       - name: Upload to Google Play
         uses: r0adkll/upload-google-play@v1
@@ -86,13 +70,10 @@ jobs:
           changesNotSentForReview: true
           whatsNewDirectory: distribution/whatsnew
 
-      - name: Upload artifacts
+      - name: Upload AAB as artifact
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: hasitv-release-artifacts
-          path: |
-            app/build/outputs/bundle/release/app-release.aab
-            upload_cert.pem
-            app/hasitv-keystore.jks
+          name: hasitv-release-aab
+          path: app/build/outputs/bundle/release/app-release.aab
           retention-days: 30
