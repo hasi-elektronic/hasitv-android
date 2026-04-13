@@ -1,4 +1,4 @@
-package de.hasi.hasitv.ui.theme
+package com.hasielectronic.hasitv.ui.theme
 
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
