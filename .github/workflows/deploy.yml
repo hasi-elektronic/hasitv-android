@@ -19,7 +19,7 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -44,25 +44,8 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x gradlew
 
-      - name: Create keystore from secret
-        run: |
-          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > app/hasitv-release.jks
-        continue-on-error: true
-
       - name: Build Release AAB
-        run: |
-          ./gradlew bundleRelease
-        env:
-          KEYSTORE_PATH: hasitv-release.jks
-          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-
-      - name: Sign AAB (if no keystore)
-        if: ${{ secrets.KEYSTORE_BASE64 == \'\' }}
-        run: |
-          # Unsigned AAB for first upload
-          echo "No keystore — uploading unsigned for Play App Signing"
+        run: ./gradlew bundleRelease
 
       - name: Upload to Google Play
         uses: r0adkll/upload-google-play@v1
@@ -70,13 +53,14 @@ jobs:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
           packageName: ${{ secrets.PACKAGE_NAME }}
           releaseFiles: app/build/outputs/bundle/release/app-release.aab
-          track: ${{ github.event.inputs.track || \'internal\' }}
+          track: ${{ github.event.inputs.track || 'internal' }}
           status: draft
           changesNotSentForReview: true
           whatsNewDirectory: distribution/whatsnew
 
       - name: Upload AAB as artifact
         uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: hasitv-release-aab
           path: app/build/outputs/bundle/release/app-release.aab
