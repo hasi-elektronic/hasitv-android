@@ -1,4 +1,4 @@
-package de.hasi.hasitv.ui.screens
+package com.hasielectronic.hasitv.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -25,9 +25,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
-import de.hasi.hasitv.data.model.Channel
-import de.hasi.hasitv.ui.theme.HasiColors
-import de.hasi.hasitv.viewmodel.MainViewModel
+import com.hasielectronic.hasitv.data.model.Channel
+import com.hasielectronic.hasitv.ui.theme.HasiColors
+import com.hasielectronic.hasitv.viewmodel.MainViewModel
 
 @Composable
 fun HomeScreen(
