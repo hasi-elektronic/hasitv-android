@@ -104,7 +104,7 @@ fun SettingsScreen(
                 SettingsSection(title = "Görünüm") {
                     Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                         Icon(
-                            if (darkTheme) Icons.Default.DarkMode else Icons.Default.LightMode,
+                            if (darkTheme) Icons.Default.Bedtime else Icons.Default.WbSunny,
                             null, tint = HasiColors.Red
                         )
                         Spacer(Modifier.width(12.dp))
@@ -139,7 +139,7 @@ fun SettingsScreen(
                     colors   = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.error),
                     border   = ButtonDefaults.outlinedButtonBorder.copy()
                 ) {
-                    Icon(Icons.Default.DeleteForever, null)
+                    Icon(Icons.Default.Delete, null)
                     Spacer(Modifier.width(8.dp))
                     Text("Tüm Verileri Temizle")
                 }
@@ -209,9 +209,9 @@ fun PlaylistRow(playlist: Playlist, onDelete: () -> Unit, onRefresh: () -> Unit)
                 color = MaterialTheme.colorScheme.onSurface)
             Text(
                 when (playlist.type) {
-                    de.hasi.hasitv.data.model.PlaylistType.M3U_URL   -> playlist.m3uUrl ?: ""
-                    de.hasi.hasitv.data.model.PlaylistType.XTREAM     -> playlist.xtreamHost ?: ""
-                    de.hasi.hasitv.data.model.PlaylistType.M3U_LOCAL  -> "Yerel dosya"
+                    PlaylistType.M3U_URL   -> playlist.m3uUrl ?: ""
+                    PlaylistType.XTREAM     -> playlist.xtreamHost ?: ""
+                    PlaylistType.M3U_LOCAL  -> "Yerel dosya"
                 },
                 fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
                 maxLines = 1
