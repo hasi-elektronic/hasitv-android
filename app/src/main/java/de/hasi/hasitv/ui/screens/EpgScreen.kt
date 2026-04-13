@@ -1,4 +1,4 @@
-package de.hasi.hasitv.ui.screens
+package com.hasielectronic.hasitv.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -21,10 +21,10 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import de.hasi.hasitv.data.model.Channel
-import de.hasi.hasitv.data.model.EpgProgram
-import de.hasi.hasitv.ui.theme.HasiColors
-import de.hasi.hasitv.viewmodel.MainViewModel
+import com.hasielectronic.hasitv.data.model.Channel
+import com.hasielectronic.hasitv.data.model.EpgProgram
+import com.hasielectronic.hasitv.ui.theme.HasiColors
+import com.hasielectronic.hasitv.viewmodel.MainViewModel
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
