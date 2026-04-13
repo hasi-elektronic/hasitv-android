@@ -11,6 +11,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -72,7 +73,7 @@ fun HomeScreen(
             Divider(Modifier.padding(vertical = 8.dp), color = MaterialTheme.colorScheme.outline)
 
             // Top nav
-            SideNavItem("TV Rehberi", Icons.Default.CalendarToday) { onOpenEpg() }
+            SideNavItem("TV Rehberi", Icons.Default.DateRange) { onOpenEpg() }
             SideNavItem("Ayarlar", Icons.Default.Settings) { onOpenSettings() }
 
             Divider(Modifier.padding(vertical = 8.dp), color = MaterialTheme.colorScheme.outline)
@@ -140,7 +141,7 @@ fun HomeScreen(
             if (channels.isEmpty() && !isLoading) {
                 Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Icon(Icons.Default.Tv, null, Modifier.size(64.dp),
+                        Icon(Icons.Default.LiveTv, null, Modifier.size(64.dp),
                             tint = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.3f))
                         Spacer(Modifier.height(16.dp))
                         Text(
@@ -252,7 +253,7 @@ fun ChannelCard(channel: Channel, onPlay: () -> Unit, onFavorite: () -> Unit) {
                 modifier = Modifier.align(Alignment.TopEnd).size(28.dp)
             ) {
                 Icon(
-                    if (channel.isFavorite) Icons.Default.Star else Icons.Default.StarBorder,
+                    if (channel.isFavorite) Icons.Default.Star else Icons.Outlined.Star,
                     null,
                     tint = if (channel.isFavorite) Color(0xFFFFD700) else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f),
                     modifier = Modifier.size(18.dp)
