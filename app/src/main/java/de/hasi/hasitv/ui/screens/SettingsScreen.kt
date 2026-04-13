@@ -1,4 +1,4 @@
-package de.hasi.hasitv.ui.screens
+package com.hasielectronic.hasitv.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -15,9 +15,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import de.hasi.hasitv.data.model.Playlist
-import de.hasi.hasitv.ui.theme.HasiColors
-import de.hasi.hasitv.viewmodel.MainViewModel
+import com.hasielectronic.hasitv.data.model.Playlist
+import com.hasielectronic.hasitv.ui.theme.HasiColors
+import com.hasielectronic.hasitv.viewmodel.MainViewModel
 import kotlinx.coroutines.launch
 
 @Composable
