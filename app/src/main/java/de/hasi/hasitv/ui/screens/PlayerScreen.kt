@@ -1,4 +1,4 @@
-package de.hasi.hasitv.ui.screens
+package com.hasielectronic.hasitv.ui.screens
 
 import android.view.ViewGroup
 import android.widget.FrameLayout
@@ -27,9 +27,9 @@ import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
-import de.hasi.hasitv.data.model.EpgProgram
-import de.hasi.hasitv.ui.theme.HasiColors
-import de.hasi.hasitv.viewmodel.MainViewModel
+import com.hasielectronic.hasitv.data.model.EpgProgram
+import com.hasielectronic.hasitv.ui.theme.HasiColors
+import com.hasielectronic.hasitv.viewmodel.MainViewModel
 import kotlinx.coroutines.delay
 import java.text.SimpleDateFormat
 import java.util.Date
