@@ -1,5 +1,7 @@
 package com.hasielectronic.hasitv.ui.screens
 
+import com.hasielectronic.hasitv.data.model.PlaylistType
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -201,21 +203,19 @@ fun SettingsSection(title: String, content: @Composable ColumnScope.() -> Unit) 
 
 @Composable
 fun PlaylistRow(playlist: Playlist, onDelete: () -> Unit, onRefresh: () -> Unit) {
+    val subtitle = when (playlist.type) {
+        PlaylistType.M3U_URL   -> playlist.m3uUrl ?: ""
+        PlaylistType.M3U_LOCAL -> "Yerel dosya"
+        PlaylistType.XTREAM    -> playlist.xtreamHost ?: ""
+    }
     Row(Modifier.fillMaxWidth().padding(vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {
         Icon(Icons.Default.List, null, Modifier.size(20.dp), tint = HasiColors.Red)
         Spacer(Modifier.width(10.dp))
         Column(Modifier.weight(1f)) {
             Text(playlist.name, fontSize = 14.sp, fontWeight = FontWeight.Medium,
                 color = MaterialTheme.colorScheme.onSurface)
-            Text(
-                when (playlist.type) {
-                    PlaylistType.M3U_URL   -> playlist.m3uUrl ?: ""
-                    PlaylistType.XTREAM     -> playlist.xtreamHost ?: ""
-                    PlaylistType.M3U_LOCAL  -> "Yerel dosya"
-                },
-                fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
-                maxLines = 1
-            )
+            Text(subtitle, fontSize = 11.sp,
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f), maxLines = 1)
         }
         Text("${playlist.channelCount} kanal", fontSize = 11.sp,
             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f))
