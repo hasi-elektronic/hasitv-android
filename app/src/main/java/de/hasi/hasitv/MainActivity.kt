@@ -1,4 +1,4 @@
-package de.hasi.hasitv
+package com.hasielectronic.hasitv
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -6,9 +6,9 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.*
-import de.hasi.hasitv.ui.screens.AppNavigation
-import de.hasi.hasitv.ui.theme.HasiTVTheme
-import de.hasi.hasitv.viewmodel.MainViewModel
+import com.hasielectronic.hasitv.ui.screens.AppNavigation
+import com.hasielectronic.hasitv.ui.theme.HasiTVTheme
+import com.hasielectronic.hasitv.viewmodel.MainViewModel
 
 class MainActivity : ComponentActivity() {
 
