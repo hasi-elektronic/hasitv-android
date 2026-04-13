@@ -1,4 +1,4 @@
-package de.hasi.hasitv.ui.screens
+package com.hasielectronic.hasitv.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -15,12 +15,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import de.hasi.hasitv.data.model.Playlist
-import de.hasi.hasitv.data.model.PlaylistType
-import de.hasi.hasitv.data.parser.XtreamConfig
-import de.hasi.hasitv.data.parser.XtreamService
-import de.hasi.hasitv.ui.theme.HasiColors
-import de.hasi.hasitv.viewmodel.MainViewModel
+import com.hasielectronic.hasitv.data.model.Playlist
+import com.hasielectronic.hasitv.data.model.PlaylistType
+import com.hasielectronic.hasitv.data.parser.XtreamConfig
+import com.hasielectronic.hasitv.data.parser.XtreamService
+import com.hasielectronic.hasitv.ui.theme.HasiColors
+import com.hasielectronic.hasitv.viewmodel.MainViewModel
 import kotlinx.coroutines.launch
 import java.util.UUID
 
