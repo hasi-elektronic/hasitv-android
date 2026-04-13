@@ -44,8 +44,24 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x gradlew
 
+      - name: Generate Keystore (for Play App Signing)
+        run: |
+          keytool -genkey -v \
+            -keystore app/hasitv-keystore.jks \
+            -alias hasitv \
+            -keyalg RSA \
+            -keysize 2048 \
+            -validity 10000 \
+            -storepass hasitv2026 \
+            -keypass hasitv2026 \
+            -dname "CN=HasiTV, OU=Hasi Elektronic, O=Hasi Elektronic, L=Vaihingen, ST=BW, C=DE"
+
       - name: Build Release AAB
         run: ./gradlew bundleRelease
+        env:
+          KEYSTORE_PASSWORD: hasitv2026
+          KEY_ALIAS: hasitv
+          KEY_PASSWORD: hasitv2026
 
       - name: Upload to Google Play
         uses: r0adkll/upload-google-play@v1
