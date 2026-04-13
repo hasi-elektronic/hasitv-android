@@ -129,7 +129,7 @@ fun PlayerScreen(vm: MainViewModel, onBack: () -> Unit) {
         if (hasError) {
             Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Icon(Icons.Default.ErrorOutline, null, Modifier.size(64.dp), tint = Color.White.copy(alpha = 0.7f))
+                    Icon(Icons.Default.Warning, null, Modifier.size(64.dp), tint = Color.White.copy(alpha = 0.7f))
                     Spacer(Modifier.height(16.dp))
                     Text("Yayın yüklenemedi", color = Color.White, fontSize = 20.sp)
                     Spacer(Modifier.height(16.dp))
